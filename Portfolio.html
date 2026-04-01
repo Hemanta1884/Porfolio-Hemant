@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemant Aacharya | Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a252f;
+            --secondary: #3498db;
+            --accent: #2ecc71;
+            --light: #f4f7f6;
+            --text: #333;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--light); color: var(--text); line-height: 1.6; }
+
+        nav {
+            background: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        nav a { 
+            text-decoration: none; 
+            color: var(--primary); 
+            font-weight: 600; 
+            margin: 0 1.5rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        nav a:hover { color: var(--secondary); }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #000000 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            border: 4px solid var(--secondary);
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 4rem 1.5rem; }
+
+        section { margin-bottom: 5rem; opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        section.reveal { opacity: 1; transform: translateY(0); }
+
+        h2 { 
+            color: var(--primary); 
+            font-size: 2.2rem; 
+            margin-bottom: 2.5rem; 
+            text-align: center;
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 10px auto;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            transition: 0.4s;
+            border-bottom: 4px solid transparent;
+        }
+        .card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1); 
+            border-bottom: 4px solid var(--secondary);
+        }
+
+        .card h3 { color: var(--secondary); margin-bottom: 0.5rem; }
+        .card .meta { color: #7f8c8d; font-weight: 600; margin-bottom: 1rem; font-size: 0.95rem; }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            text-align: center;
+        }
+        .skill-item {
+            background: #e1f0fa;
+            color: var(--primary);
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .achievement-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        .achievement-item i {
+            color: #f1c40f;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            margin-top: 5px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .contact-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text);
+            transition: 0.3s;
+        }
+        .contact-card:hover { background: var(--secondary); color: white; }
+        .contact-card i { font-size: 2rem; margin-bottom: 1rem; display: block; }
+
+        footer { text-align: center; padding: 3rem; background: var(--primary); color: white; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<header>
+
+    <h1>Hemant Aacharya</h1>
+    <p style="font-size: 1.2rem; margin-top: 0.5rem;">Junior Project Manager</p>
+
+</header>
+
+<div class="container">
+    <section id="about">
+        <h2>Professional Summary</h2>
+        <div class="card">
+            <p>Detail-oriented and result-oriented Project Management Trainee with hands-on experience in assisting project planning, execution, and documentation throughout the project life cycle. I specialize in setting project goals, managing timelines, and contributing to sprint planning and backlog refinement to ensure quality delivery within professional environments.</p>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Work Experience</h2>
+        <div class="card">
+            <h3>Project Management Trainee</h3>
+            <div class="meta">Naxa Pvt. Ltd | Jan 2026 – Mar 2026</div>
+            <ul>
+                <li>Supported project planning, sprint cycles, and execution while ensuring alignment with project goals.</li>
+                <li>Prepared and maintained critical project documentation including SRS, technical documents, and user manuals.</li>
+                <li>Collaborated effectively with project managers and cross-functional teams throughout the lifecycle.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Project Assistant</h3>
+            <div class="meta">Kathmandu University Academia-Industry Cooperation Unit | Jan 2025 – Present</div>
+            <ul>
+                <li>Conducted requirement analysis and managed documentation for academia-industry collaboration projects.</li>
+                <li>Designed workflows and performance dashboards for monitoring deliverables and employee contracts.</li>
+                <li>Facilitated stakeholder meetings and supported proposal development.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Junior Quality Assurance</h3>
+            <div class="meta">Information Care Pvt Ltd | Jun 2024 – Jan 2025</div>
+            <ul>
+                <li>Analyzed product requirements for the Connect Kisan e-commerce platform.</li>
+                <li>Developed BRDs, test cases, and user stories using JIRA and Test Rail.</li>
+                <li>Conducted User Acceptance Testing (UAT) and trend analysis for product improvement.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Core Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-item">JIRA</div>
+            <div class="skill-item">Sprint Planning</div>
+            <div class="skill-item">Backlog Mgmt</div>
+            <div class="skill-item">SRS/BRD/UAT</div>
+            <div class="skill-item">Power BI</div>
+            <div class="skill-item">Python</div>
+            <div class="skill-item">UI/UX Design</div>
+            <div class="skill-item">Agile Method</div>
+        </div>
+    </section>
+
+    <section id="achievements">
+        <h2>Honors & Achievements</h2>
+        <div class="card">
+            <div class="achievement-item">
+                <i class="fas fa-trophy"></i>
+                <div>
+                    <strong>Semester Topper</strong>
+                    <p>Recognized by Kathmandu University School of Management for outstanding academic performance.</p>
+                </div>
+            </div>
+            <div class="achievement-item">
+                <i class="fas fa-lightbulb"></i>
+                <div>
+                    <strong>Best Idea Presenter</strong>
+                    <p>Awarded in the "Build-to-Solve" workshop hosted by the Department of Management, Informatics and Communication.</p>
+                </div>
+            </div>
+            <div class="achievement-item">
+                <i class="fas fa-users"></i>
+                <div>
+                    <strong>Sponsorship Head</strong>
+                    <p>Led the Hult Prize KU team to secure partnerships with 15 corporate companies in 2023.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-grid">
+            <a href="mailto:aacharya.hemanta123@gmail.com" class="contact-card">
+                <i class="fas fa-envelope"></i>
+                aacharya.hemanta123@gmail.com
+            </a>
+            <a href="tel:9860103471" class="contact-card">
+                <i class="fas fa-phone"></i>
+                +977 9860103471
+            </a>
+            <a href="https://www.linkedin.com/in/hemant-aacharya-7a35a5211/" target="_blank" class="contact-card">
+                <i class="fab fa-linkedin"></i>
+                LinkedIn Profile
+            </a>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2026 Hemant Aacharya | Project Management Professional</p>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => observer.observe(section));
+</script>
+
+</body>
+</html>
