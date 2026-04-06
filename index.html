@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemant Aacharya | Junior Project Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Particles, Typed, Tilt -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+        
+        :root {
+            --primary: #3b82f6;
+            --bg-dark: #020617;
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--bg-dark); 
+            color: #f8fafc;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass:hover {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #2dd4bf 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        .gradient-text::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(135deg, #60a5fa 0%, #2dd4bf 100%);
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+
+        .gradient-text:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .exp-dot {
+            position: absolute;
+            left: -33px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover .exp-dot {
+            transform: scale(1.5);
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.9);
+        }
+
+        .skill-badge {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 8px 18px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #93c5fd;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-badge:hover {
+            transform: translateY(-3px) scale(1.05);
+            background: rgba(59, 130, 246, 0.2);
+            border-color: #60a5fa;
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Progress Bar */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(135deg, #60a5fa 0%, #2dd4bf 100%);
+            z-index: 100;
+            transition: width 0.1s ease;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+    </style>
+</head>
+<body class="relative">
+
+    <div id="progress-bar"></div>
+    <div id="particles-js"></div>
+
+    <nav class="fixed w-full z-50 top-0 pt-4 px-4 transition-all duration-300" id="navbar">
+        <div class="max-w-6xl mx-auto glass rounded-2xl px-8 py-4 flex justify-between items-center bg-slate-950/70">
+            <a href="#" class="text-xl font-bold tracking-tighter hover:scale-105 transition-transform duration-300">HEMANT<span class="text-blue-500">.</span></a>
+            <div class="hidden md:flex gap-8 text-sm font-semibold uppercase tracking-widest text-slate-400">
+                <a href="#experience" class="hover:text-white hover:text-blue-400 transition-colors">Experience</a>
+                <a href="#education" class="hover:text-white hover:text-blue-400 transition-colors">Education</a>
+                <a href="#achievements" class="hover:text-white hover:text-blue-400 transition-colors">Achievements</a>
+                <a href="#skills" class="hover:text-white hover:text-blue-400 transition-colors">Skills</a>
+            </div>
+            <a href="mailto:aacharya.hemanta123@gmail.com" class="bg-blue-600 px-5 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/30 transition-all transform hover:-translate-y-1">Contact</a>
+        </div>
+    </nav>
+
+    <section class="min-h-screen flex items-center justify-center pt-20 px-6 relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-6xl md:text-8xl font-extrabold mb-4 animate__animated animate__fadeInDown tracking-tight">
+                Hemant <span class="gradient-text">Aacharya</span>
+            </h1>
+            <div class="h-10 mb-6">
+                <p class="text-blue-400 font-bold tracking-[0.2em] uppercase text-xl"><span id="typed"></span></p>
+            </div>
+            <p class="text-slate-400 text-lg leading-relaxed max-w-3xl mx-auto mb-10 animate__animated animate__fadeInUp animate__delay-1s">
+                Detail-oriented and result-oriented Junior Project Manager with hands-on experience in assisting project planning, project execution, and project documentation throughout the project life cycle.
+            </p>
+            <div class="flex flex-wrap justify-center gap-6 animate__animated animate__fadeInUp animate__delay-1s">
+                <a href="https://www.linkedin.com/in/hemant-aacharya-7a35a5211/" target="_blank" class="glass px-8 py-3 rounded-xl font-bold flex items-center gap-3 hover:bg-white/10 transition-all group">
+                    <i class="fab fa-linkedin text-blue-400 text-xl group-hover:scale-110 transition-transform"></i> 
+                    <span>LinkedIn</span>
+                </a>
+                <a href="#experience" class="px-8 py-3 rounded-xl font-bold flex items-center gap-3 border border-blue-500/30 text-blue-400 hover:bg-blue-500/10 transition-all group">
+                    <span>Explore Work</span>
+                    <i class="fas fa-arrow-down group-hover:translate-y-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll down indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce flex flex-col items-center text-slate-500">
+            <span class="text-xs tracking-widest uppercase mb-2">Scroll</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <section id="experience" class="py-24 max-w-4xl mx-auto px-6 relative z-10">
+        <h2 class="text-3xl font-bold mb-20 text-center reveal">
+            <span class="underline decoration-blue-500 decoration-4 underline-offset-8">Professional Experience</span>
+        </h2>
+        
+        <div class="space-y-16 border-l-2 border-slate-800 ml-4 relative">
+            
+            <div class="relative pl-8 experience-item reveal-right">
+                <div class="exp-dot"></div>
+                <div class="glass p-6 rounded-2xl">
+                    <div class="flex flex-wrap justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Project Management Traineeship</h3>
+                            <p class="text-blue-400 font-semibold italic flex items-center gap-2 mt-1">
+                                <i class="fas fa-building text-sm"></i> Naxa Pvt. Ltd | Santinagar-31, Kathmandu
+                            </p>
+                        </div>
+                        <span class="bg-blue-500/10 px-3 py-1 rounded-full text-blue-400 font-mono text-xs border border-blue-500/20 mt-2 sm:mt-0">Jan, 2026 – Mar, 2026</span>
+                    </div>
+                    <ul class="space-y-3 text-slate-400 text-sm leading-relaxed mt-4">
+                        <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-blue-500/50 mt-1 text-xs"></i> <span>Supported project planning, sprint cycles, and execution while ensuring tasks were completed on time and aligned with project goals.</span></li>
+                        <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-blue-500/50 mt-1 text-xs"></i> <span>Prepared and maintained project documentation including reports, meeting minutes, system requirements, technical documents, and user manuals.</span></li>
+                        <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-blue-500/50 mt-1 text-xs"></i> <span>Collaborated effectively with project managers, cross-functional teams, and stakeholders throughout the project lifecycle.</span></li>
+                        <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-blue-500/50 mt-1 text-xs"></i> <span>Delivered high-quality, organized, and scalable work in line with company standards and best practices.</span></li>
+                        <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-blue-500/50 mt-1 text-xs"></i> <span>Demonstrated proactiveness, problem-solving ability, and continuous learning to improve processes and outcomes.</span></li>
+                        <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-blue-500/50 mt-1 text-xs"></i> <span>Communicated professionally, maintained a positive attitude, and provided regular progress updates and reports.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="relative pl-8 experience-item reveal-right" style="transition-delay: 0.1s;">
+                <div class="exp-dot" style="background: #2dd4bf; box-shadow: 0 0 15px rgba(45, 212, 191, 0.6);"></div>
+                <div class="glass p-6 rounded-2xl">
+                    <div class="flex flex-wrap justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Project Assistant</h3>
+                            <p class="text-teal-400 font-semibold italic flex items-center gap-2 mt-1">
+                                <i class="fas fa-university text-sm"></i> Kathmandu University Academia-Industry Cooperation Unit
+                            </p>
+                        </div>
+                        <span class="bg-teal-500/10 px-3 py-1 rounded-full text-teal-400 font-mono text-xs border border-teal-500/20 mt-2 sm:mt-0">Jan, 2025 – Present</span>
+                    </div>
+                    <ul class="space-y-3 text-slate-400 text-sm leading-relaxed mt-4">
+                        <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-teal-500/50 mt-1 text-xs"></i> <span>Conducted requirement analysis for academia-industry collaboration projects and managed related documentation.</span></li>
+                        <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-teal-500/50 mt-1 text-xs"></i> <span>Designed and maintained project workflows and performance dashboards for monitoring employee contracts and deliverables.</span></li>
+                        <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-teal-500/50 mt-1 text-xs"></i> <span>Facilitated stakeholder meetings and coordinated project tasks across cross-functional teams.</span></li>
+                        <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-teal-500/50 mt-1 text-xs"></i> <span>Supported proposal development and documentation, aligning with institutional business objectives.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="relative pl-8 experience-item reveal-right" style="transition-delay: 0.2s;">
+                <div class="exp-dot" style="background: #94a3b8; box-shadow: 0 0 15px rgba(148, 163, 184, 0.6);"></div>
+                <div class="glass p-6 rounded-2xl">
+                    <div class="flex flex-wrap justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Junior Quality Assurance</h3>
+                            <p class="text-slate-300 font-semibold italic flex items-center gap-2 mt-1">
+                                <i class="fas fa-laptop-code text-sm"></i> Information Care Pvt Ltd | Mid-Baneshwor
+                            </p>
+                        </div>
+                        <span class="bg-slate-500/10 px-3 py-1 rounded-full text-slate-300 font-mono text-xs border border-slate-500/20 mt-2 sm:mt-0">Jun, 2024 – Jan, 2025</span>
+                    </div>
+                    <ul class="space-y-3 text-slate-400 text-sm leading-relaxed mt-4">
+                        <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-slate-500/50 mt-1 text-xs"></i> <span>Collaborated with business and development teams to analyze product requirements for the Connect Kisan e-commerce platform, aligning technical outputs with business goals.</span></li>
+                        <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-slate-500/50 mt-1 text-xs"></i> <span>Created and maintained BRDs, test cases, and user stories in JIRA and TestRail to ensure clear communication of functional needs.</span></li>
+                        <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-slate-500/50 mt-1 text-xs"></i> <span>Performed User Acceptance Testing (UAT) to validate product features and payment workflows, ensuring high-quality user experience.</span></li>
+                        <li class="flex gap-3 items-start"><i class="fas fa-check-circle text-slate-500/50 mt-1 text-xs"></i> <span>Conducted data and trend analysis to assess platform performance and user behavior, supporting process improvement initiatives.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="py-24 max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12 relative z-10">
+        <div class="glass p-10 rounded-3xl reveal-left" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2">
+            <div class="bg-blue-500/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 border border-blue-500/20">
+                <i class="fas fa-graduation-cap text-3xl text-blue-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold mb-6 text-white pb-4 border-b border-white/10">Education</h2>
+            <div class="mt-6">
+                <h3 class="text-xl font-bold text-blue-100">Bachelor of Business Information System</h3>
+                <p class="text-blue-400 mt-2 font-medium">Kathmandu University</p>
+                <p class="text-slate-500 text-sm mb-4 mt-1 flex items-center gap-2"><i class="far fa-calendar-alt"></i> Feb 2021 – Dec 2024</p>
+                <p class="text-slate-400 text-sm leading-relaxed p-4 bg-white/5 rounded-xl border border-white/5">Specializing in business management, data analytics, and IT system design.</p>
+            </div>
+        </div>
+
+        <div id="achievements" class="glass p-10 rounded-3xl reveal-right" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2">
+            <div class="bg-teal-500/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 border border-teal-500/20">
+                <i class="fas fa-award text-3xl text-teal-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold mb-6 text-white pb-4 border-b border-white/10">Key Achievements</h2>
+            <ul class="space-y-6 text-sm text-slate-300 mt-6">
+                <li class="flex gap-4 p-4 bg-white/5 rounded-xl border border-white/5 hover:bg-white/10 transition-colors">
+                    <i class="fas fa-star text-yellow-500 mt-1 text-lg"></i> 
+                    <div>
+                        <strong class="block text-white mb-1">Semester Topper</strong>
+                        <span class="text-slate-400">KU School of Management</span>
+                    </div>
+                </li>
+                <li class="flex gap-4 p-4 bg-white/5 rounded-xl border border-white/5 hover:bg-white/10 transition-colors">
+                    <i class="fas fa-lightbulb text-yellow-500 mt-1 text-lg"></i> 
+                    <div>
+                        <strong class="block text-white mb-1">Best Idea Presenter</strong>
+                        <span class="text-slate-400">Build-to-Solve Workshop</span>
+                    </div>
+                </li>
+                <li class="flex gap-4 p-4 bg-white/5 rounded-xl border border-white/5 hover:bg-white/10 transition-colors">
+                    <i class="fas fa-medal text-yellow-500 mt-1 text-lg"></i> 
+                    <div>
+                        <strong class="block text-white mb-1">Academic Scholarship</strong>
+                        <span class="text-slate-400">25% Performance-based</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="skills" class="py-24 max-w-5xl mx-auto px-6 text-center relative z-10">
+        <h2 class="text-3xl font-bold mb-4 reveal">Skills & Toolkit</h2>
+        <p class="text-slate-400 mb-12 max-w-2xl mx-auto reveal animate__delay-1s">A comprehensive set of tools and methodologies I use to drive project success and deliver quality results.</p>
+        
+        <div class="flex flex-wrap justify-center gap-4 reveal">
+            <span class="skill-badge"><i class="fab fa-jira mr-2"></i>JIRA</span>
+            <span class="skill-badge"><i class="fas fa-running mr-2"></i>Sprint Planning</span>
+            <span class="skill-badge"><i class="fas fa-list-check mr-2"></i>Backlog Management</span>
+            <span class="skill-badge"><i class="fas fa-file-alt mr-2"></i>Documentation: BRD, SRS, UAT</span>
+            <span class="skill-badge"><i class="fas fa-clock mr-2"></i>Meeting Minutes</span>
+            <span class="skill-badge"><i class="fas fa-flag-checkered mr-2"></i>Project Completion Report</span>
+            <span class="skill-badge"><i class="fas fa-vial mr-2"></i>Manual Testing</span>
+            <span class="skill-badge"><i class="fas fa-clipboard-check mr-2"></i>Test Case Design</span>
+            <span class="skill-badge"><i class="fas fa-tachometer-alt mr-2"></i>Performance Testing</span>
+            <span class="skill-badge"><i class="fab fa-microsoft mr-2"></i>Microsoft Office</span>
+            <span class="skill-badge"><i class="fas fa-chart-bar mr-2"></i>Power BI</span>
+            <span class="skill-badge"><i class="fas fa-comments mr-2"></i>Communication</span>
+            <span class="skill-badge"><i class="fas fa-chart-pie mr-2"></i>Data Analysis</span>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-slate-900/50 text-center relative z-10 bg-black/20 backdrop-blur-md">
+        <p class="text-slate-400 text-sm mb-6 flex items-center justify-center gap-2"><i class="fas fa-map-marker-alt text-blue-500"></i> Panauti 11, Bagmati</p>
+        <div class="flex justify-center gap-8 mb-8">
+            <a href="mailto:aacharya.hemanta123@gmail.com" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-blue-600 transition-all transform hover:scale-110"><i class="fas fa-envelope text-xl"></i></a>
+            <a href="https://www.linkedin.com/in/hemant-aacharya-7a35a5211/" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-blue-600 transition-all transform hover:scale-110"><i class="fab fa-linkedin text-xl"></i></a>
+        </div>
+        <p class="text-slate-600 text-xs uppercase tracking-[0.3em]">© 2026 Hemant Aacharya | Junior Project Manager Portfolio</p>
+    </footer>
+
+    <script>
+        // Particles.js configuration
+        particlesJS('particles-js', {
+            "particles": {
+                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#3b82f6" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.3, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
+                "size": { "value": 3, "random": true, "anim": { "enable": false } },
+                "line_linked": { "enable": true, "distance": 150, "color": "#3b82f6", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 1.5, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } },
+                    "push": { "particles_nb": 4 }
+                }
+            },
+            "retina_detect": true
+        });
+
+        // Typed.js initialization
+        new Typed('#typed', {
+            strings: ['Junior Project Manager', 'Detail-Oriented Professional', 'Process Optimizer', 'Data Analyst'],
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 2000,
+            loop: true,
+            cursorChar: '|',
+            autoInsertCss: true
+        });
+
+        // Reveal animations on scroll
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        window.addEventListener('scroll', reveal);
+        reveal(); // Trigger once on load
+
+        // Progress bar and Navbar adjustment on scroll
+        window.addEventListener('scroll', () => {
+            // Progress bar
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progress-bar').style.width = scrolled + '%';
+
+            // Navbar background
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('backdrop-blur-md');
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('backdrop-blur-md');
+                nav.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
